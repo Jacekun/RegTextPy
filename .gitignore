@@ -127,3 +127,4 @@ dmypy.json
 # Customs
 rules/__pycache__/
 161.csv
+161.csv_output.txt

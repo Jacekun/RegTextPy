@@ -2,8 +2,23 @@
 import os
 import imp
 
+# define our clear function 
+def clear(): 
+  
+    # for windows 
+    if os.name == 'nt': 
+        _ = os.system('cls') 
+  
+    # for mac and linux(here, os.name is 'posix') 
+    else: 
+        _ = os.system('clear')
+
 # Main execution
 class Main:
+
+    # Open Log File
+    logFile = open("AppLog.log", "a")
+
     # Get module
     modName = input("Enter module: ")
 
@@ -18,7 +33,11 @@ class Main:
     dataList = modsplitFile(fileLoc)
 
     # Open file for appending
-    resFile = open(fileLoc + "_output.txt", "a")
+    outputFile = fileLoc + "_output.txt"
+    resFile = open(outputFile, "a")
+
+    # Log file name
+    logFile.write("Original file: " + fileLoc + "\nOutput file: " + outputFile + "\n\n")
 
     # Iterate over the list generated from the file
     count = 0
@@ -30,7 +49,14 @@ class Main:
         result = modFormatString(i)
         if result:
             resFile.write(result + "\n")
+            logFile.write("Index: " + str(count) + "\nOriginal: "+ i + "Result: " + result + "\n\n")
 
+        clear()
         print(str(count), " out of ", str(countMax), " done! Percentage: ", str((count/countMax)*100), "%")
     
+    # Close output file
     resFile.close()
+    print("All done! Check file: ", outputFile, " | Located in the same folder")
+
+    # Close Log file
+    logFile.close()
