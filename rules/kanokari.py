@@ -12,4 +12,20 @@ def formatString(str):
     str = re.sub("[;,!?.~*\"]", " ", str)
     str = str.replace("[", " ")
     str = str.replace("]", " ")
+
+    # Lowercase
+    str = str.lower()
+
+    # Remove double whitespaces
+    while "  " in str:
+        str = str.replace("  ", " ")
+
+    # Trim
+    str = str.strip()
+
+    # If starts with 'chapter' or 'page'
+    if str.startswith('chapter') or str.startswith('page'):
+        str = "\n" + str + "\n"
+
+    # Return str
     return str
