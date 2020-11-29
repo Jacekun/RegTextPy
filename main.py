@@ -17,8 +17,20 @@ class Main:
     # Get List of Strings
     dataList = modsplitFile(fileLoc)
 
+    # Open file for appending
+    resFile = open(fileLoc + "_output.txt", "a")
+
     # Iterate over the list generated from the file
     count = 0
+    countMax = len(dataList)
+    result = ""
+
     for i in dataList:
         count += 1
-        print("(" + str(count) + ")" + ": " + modFormatString(i))
+        result = modFormatString(i)
+        if result:
+            resFile.write(result + "\n")
+            
+        print(str(count), " out of ", str(countMax), " done! Percentage: ", str((count/countMax)*100), "%")
+    
+    resFile.close()
