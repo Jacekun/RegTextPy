@@ -1,5 +1,10 @@
 import re
 
+def splitFile(filename):
+    # Read the file
+    with open (filename, "r") as fileId:
+        return fileId.readlines()
+
 def formatString(str):
     # Get the string after the first occurence of 'target'
     try:

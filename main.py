@@ -9,14 +9,15 @@ class Main:
     modName = input("Enter module: ")
 
     module = imp.load_source( modName, os.path.join('rules', modName + ".py"))
+    modsplitFile = getattr( module, "splitFile")
     modFormatString = getattr( module, "formatString")
 
     # Get filename
     fileLoc = input("Enter complete full filename: ")
-    print("File: " + fileLoc)
-    # Read the file
-    with open (fileLoc, "r") as fileId:
-        dataList = fileId.readlines()
+
+    # Get List of Strings
+    dataList = modsplitFile(fileLoc)
+
     # Iterate over the list generated from the file
     count = 0
     for i in dataList:
