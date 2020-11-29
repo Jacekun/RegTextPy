@@ -1,8 +1,8 @@
 # imports
 import os
 import imp
-# Main execution
 
+# Main execution
 class Main:
     # Get module
     modName = input("Enter module: ")
@@ -12,7 +12,7 @@ class Main:
     modFormatString = getattr( module, "formatString")
 
     # Get filename
-    fileLoc = input("Enter complete full filename: ")
+    fileLoc = input("Enter filename (in the same folder): ")
 
     # Get List of Strings
     dataList = modsplitFile(fileLoc)
@@ -30,7 +30,7 @@ class Main:
         result = modFormatString(i)
         if result:
             resFile.write(result + "\n")
-            
+
         print(str(count), " out of ", str(countMax), " done! Percentage: ", str((count/countMax)*100), "%")
     
     resFile.close()
