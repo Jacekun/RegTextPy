@@ -1,6 +1,5 @@
 # imports
 import os
-from importlib import import_module
 import imp
 # Main execution
 
